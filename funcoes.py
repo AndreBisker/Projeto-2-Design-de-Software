@@ -29,3 +29,5 @@ def calcula_pontos_regra_simples(f):
         elif f[i]==6:
             d[6]+=6
     return d
+def calcula_pontos_soma(lista):
+    return sum(lista)
