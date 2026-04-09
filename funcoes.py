@@ -59,3 +59,19 @@ def calcula_pontos_sequencia_alta(r):
         return 30
     else:
         return 0
+def calcula_pontos_full_house(r):
+    um=r.count(1)
+    dois=r.count(2)
+    tres=r.count(3)
+    quatro=r.count(4)
+    cinco=r.count(5)
+    seis=r.count(6)
+    soma=0
+    l=[um,dois,tres,quatro,cinco,seis]
+    if 2 in l:
+        if 3 in l:
+            for i in range(len(r)):
+                soma+=r[i]
+            return soma
+    return 0
+
