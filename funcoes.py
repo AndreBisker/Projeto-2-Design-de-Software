@@ -30,4 +30,7 @@ def calcula_pontos_regra_simples(f):
             d[6]+=6
     return d
 def calcula_pontos_soma(lista):
-    return sum(lista)
+    valor=0
+    for i in range(len(lista)):
+        valor+=lista[i]
+    return valor
