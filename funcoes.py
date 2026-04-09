@@ -102,3 +102,13 @@ def calcula_pontos_quina(r):
         if l[i]>4:
             return 50
     return 0
+def calcula_pontos_regra_avancada(r):
+    d={}
+    d['cinco_iguais']=calcula_pontos_quina(r)
+    d['full_house']=calcula_pontos_full_house(r)
+    d['quadra']=calcula_pontos_quadra(r)
+    d['sem_combinacao']=calcula_pontos_soma(r)
+    d['sequencia_alta']=calcula_pontos_sequencia_alta(r)
+    d['sequencia_baixa']=calcula_pontos_sequencia_baixa(r)
+    return d
+print(calcula_pontos_regra_avancada([4, 4, 4, 4, 4]))
