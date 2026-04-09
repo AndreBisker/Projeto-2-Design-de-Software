@@ -49,3 +49,10 @@ def calcula_pontos_sequencia_baixa(r):
         if ok==True:
             return 15
     return 0
+def calcula_pontos_sequencia_alta(r):
+    r = list(set(r))
+    r.sort()
+    for i in range(len(r)-1):
+        if r[i+1]!=r[i]+1:
+            return 0
+    return 30
