@@ -83,7 +83,9 @@ def calcula_pontos_quadra(r):
     seis=r.count(6)
     soma=0
     l=[um,dois,tres,quatro,cinco,seis]
-    if 4 in l:
-        for i in range(len(r)):
-            soma+=r[i]
-    return soma
+    for i in range(len(r)):
+        if r[i]>3:
+            for i in range(len(r)):
+                soma+=r[i]
+            break
+    return soma,l
