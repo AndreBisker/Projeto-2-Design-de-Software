@@ -35,12 +35,17 @@ def calcula_pontos_soma(lista):
         valor+=lista[o]
     return valor
 def calcula_pontos_sequencia_baixa(r):
-    x=0
+    r = list(set(r))
     r.sort()
-    for i in range(len(r)-1):
-        if r[i+1]==r[i]+1:
-            x+=1
-    if x==3:
-        return 15
-    else:
-        return 0
+    s1 = [1,2,3,4]
+    s2 = [2,3,4,5]
+    s3 = [3,4,5,6]
+    for seq in [s1, s2, s3]:
+        ok = True
+        for num in seq:
+            if num not in r:
+                ok = False
+                break
+        if ok==True:
+            return 15
+    return 0
