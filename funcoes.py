@@ -88,4 +88,4 @@ def calcula_pontos_quadra(r):
             for i in range(len(r)):
                 soma+=r[i]
             break
-    return soma,l
+    return soma
