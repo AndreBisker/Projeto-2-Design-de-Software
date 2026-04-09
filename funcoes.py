@@ -111,4 +111,3 @@ def calcula_pontos_regra_avancada(r):
     d['sequencia_alta']=calcula_pontos_sequencia_alta(r)
     d['sequencia_baixa']=calcula_pontos_sequencia_baixa(r)
     return d
-print(calcula_pontos_regra_avancada([4, 4, 4, 4, 4]))
