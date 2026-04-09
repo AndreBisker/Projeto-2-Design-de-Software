@@ -89,3 +89,16 @@ def calcula_pontos_quadra(r):
                 soma+=r[i]
             break
     return soma
+def calcula_pontos_quina(r):
+    um=r.count(1)
+    dois=r.count(2)
+    tres=r.count(3)
+    quatro=r.count(4)
+    cinco=r.count(5)
+    seis=r.count(6)
+    soma=0
+    l=[um,dois,tres,quatro,cinco,seis]
+    for i in range(len(l)):
+        if l[i]>4:
+            return 50
+    return 0
