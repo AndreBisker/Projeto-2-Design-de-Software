@@ -13,8 +13,3 @@ def remover_dado(r,g,n):
     r.append(g[n])
     g.pop(n)
     return [r,g]
-dados_rolados = [2, 2, 2, 2]
-dados_no_estoque = [1]
-dado_para_remover = 0
-
-print(remover_dado(dados_rolados, dados_no_estoque, dado_para_remover))
