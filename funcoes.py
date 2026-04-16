@@ -111,3 +111,14 @@ def calcula_pontos_regra_avancada(r):
     d['sequencia_alta']=calcula_pontos_sequencia_alta(r)
     d['sequencia_baixa']=calcula_pontos_sequencia_baixa(r)
     return d
+def faz_jogada(r,ctg,car):
+    s=calcula_pontos_regra_simples(r)
+    a=calcula_pontos_regra_avancada(r)
+    if ctg in {'1','2','3','4','5','6'}:
+        c=int(ctg)
+        car['regra_simples'][c]=s[c]
+        return car
+    else:
+        car['regra_avancada'][ctg]=a[ctg]
+        return car
+
