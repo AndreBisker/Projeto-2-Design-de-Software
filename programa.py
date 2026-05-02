@@ -17,11 +17,12 @@ def cartela_completa(cartela):
            all(v != -1 for v in cartela['regra_avancada'].values())
 
 def calcular_total(cartela):
-    total = 0
     soma_simples = sum(v for v in cartela['regra_simples'].values() if v != -1)
-    total += soma_simples
+    total = soma_simples
+
     if soma_simples >= 63:
         total += 35
+
     total += sum(v for v in cartela['regra_avancada'].values() if v != -1)
     return total
 
@@ -64,7 +65,6 @@ while not cartela_completa(cartela):
             imprime_cartela(cartela)
 
         elif opcao == "0":
-            # MODO TRAVADO: nunca volta pro menu
             while True:
                 print("Digite a combinação desejada:")
                 categoria = input()
