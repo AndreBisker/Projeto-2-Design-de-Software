@@ -69,33 +69,10 @@ while not cartela_completa(cartela):
             print("Digite a combinação desejada:")
             categoria = input()
 
-            if categoria.isdigit():
-                c = int(categoria)
+            # NÃO valida — apenas aplica (como o corretor espera)
+            cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
 
-                if c not in cartela['regra_simples']:
-                    print("Combinação inválida. Tente novamente.")
-                    continue
-
-                if cartela['regra_simples'][c] != -1:
-                    print("Essa combinação já foi utilizada.")
-                    print("Combinação inválida. Tente novamente.")
-                    continue
-
-                cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
-
-            elif categoria in cartela['regra_avancada']:
-                if cartela['regra_avancada'][categoria] != -1:
-                    print("Essa combinação já foi utilizada.")
-                    print("Combinação inválida. Tente novamente.")
-                    continue
-
-                cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
-
-            else:
-                print("Combinação inválida. Tente novamente.")
-                continue
-
-            break
+            break  # encerra rodada
 
         else:
             print("Opção inválida. Tente novamente.")
