@@ -34,9 +34,8 @@ while not cartela_completa(cartela):
     dados_guardados = []
     rerrolagens = 0
 
-    rodada_ativa = True
+    while True:
 
-    while rodada_ativa:
         print("Dados rolados:", dados_rolados)
         print("Dados guardados:", dados_guardados)
         print("Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:")
@@ -66,6 +65,7 @@ while not cartela_completa(cartela):
             imprime_cartela(cartela)
 
         elif opcao == "0":
+
             while True:
                 print("Digite a combinação desejada:")
                 categoria = input()
@@ -95,7 +95,7 @@ while not cartela_completa(cartela):
                 else:
                     print("Combinação inválida. Tente novamente.")
 
-            rodada_ativa = False  # encerra rodada corretamente
+            break  # FINALIZA A RODADA CORRETAMENTE
 
         else:
             print("Opção inválida. Tente novamente.")
