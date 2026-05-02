@@ -17,8 +17,9 @@ def cartela_completa(cartela):
            all(v != -1 for v in cartela['regra_avancada'].values())
 
 def calcular_total(cartela):
+    total = 0
     soma_simples = sum(v for v in cartela['regra_simples'].values() if v != -1)
-    total = soma_simples
+    total += soma_simples
 
     if soma_simples >= 63:
         total += 35
@@ -65,36 +66,36 @@ while not cartela_completa(cartela):
             imprime_cartela(cartela)
 
         elif opcao == "0":
-            while True:
-                print("Digite a combinação desejada:")
-                categoria = input()
+            print("Digite a combinação desejada:")
+            categoria = input()
 
-                if categoria.isdigit():
-                    c = int(categoria)
+            if categoria.isdigit():
+                c = int(categoria)
 
-                    if c not in cartela['regra_simples']:
-                        print("Combinação inválida. Tente novamente.")
-                        continue
-
-                    if cartela['regra_simples'][c] != -1:
-                        print("Essa combinação já foi utilizada.")
-                        continue
-
-                    cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
-                    break
-
-                elif categoria in cartela['regra_avancada']:
-                    if cartela['regra_avancada'][categoria] != -1:
-                        print("Essa combinação já foi utilizada.")
-                        continue
-
-                    cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
-                    break
-
-                else:
+                if c not in cartela['regra_simples']:
                     print("Combinação inválida. Tente novamente.")
+                    continue
 
-            break  # encerra rodada
+                if cartela['regra_simples'][c] != -1:
+                    print("Essa combinação já foi utilizada.")
+                    print("Combinação inválida. Tente novamente.")
+                    continue
+
+                cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
+
+            elif categoria in cartela['regra_avancada']:
+                if cartela['regra_avancada'][categoria] != -1:
+                    print("Essa combinação já foi utilizada.")
+                    print("Combinação inválida. Tente novamente.")
+                    continue
+
+                cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
+
+            else:
+                print("Combinação inválida. Tente novamente.")
+                continue
+
+            break
 
         else:
             print("Opção inválida. Tente novamente.")
