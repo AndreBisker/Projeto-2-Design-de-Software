@@ -13,27 +13,19 @@ cartela = {
 }
 
 def cartela_completa(cartela):
-    for v in cartela['regra_simples'].values():
-        if v == -1:
-            return False
-    for v in cartela['regra_avancada'].values():
-        if v == -1:
-            return False
-    return True
+    return all(v != -1 for v in cartela['regra_simples'].values()) and \
+           all(v != -1 for v in cartela['regra_avancada'].values())
 
 def calcular_total(cartela):
     total = 0
     soma_simples = sum(v for v in cartela['regra_simples'].values() if v != -1)
     total += soma_simples
-
     if soma_simples >= 63:
         total += 35
-
     total += sum(v for v in cartela['regra_avancada'].values() if v != -1)
     return total
 
 
-# impressão inicial obrigatória
 imprime_cartela(cartela)
 
 while not cartela_completa(cartela):
@@ -42,9 +34,7 @@ while not cartela_completa(cartela):
     dados_guardados = []
     rerrolagens = 0
 
-    jogada_finalizada = False
-
-    while not jogada_finalizada:
+    while True:
         print("Dados rolados:", dados_rolados)
         print("Dados guardados:", dados_guardados)
         print("Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:")
@@ -74,6 +64,7 @@ while not cartela_completa(cartela):
             imprime_cartela(cartela)
 
         elif opcao == "0":
+            # MODO TRAVADO: nunca volta pro menu
             while True:
                 print("Digite a combinação desejada:")
                 categoria = input()
@@ -90,7 +81,6 @@ while not cartela_completa(cartela):
                         continue
 
                     cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
-                    jogada_finalizada = True
                     break
 
                 elif categoria in cartela['regra_avancada']:
@@ -99,17 +89,16 @@ while not cartela_completa(cartela):
                         continue
 
                     cartela = faz_jogada(dados_rolados + dados_guardados, categoria, cartela)
-                    jogada_finalizada = True
                     break
 
                 else:
                     print("Combinação inválida. Tente novamente.")
 
+            break  # encerra rodada
+
         else:
             print("Opção inválida. Tente novamente.")
 
 
-# final do jogo
 imprime_cartela(cartela)
-total = calcular_total(cartela)
-print(f"Pontuação total: {total}")
+print(f"Pontuação total: {calcular_total(cartela)}")
