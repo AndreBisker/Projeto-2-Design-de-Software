@@ -11,7 +11,14 @@ cartela = {
         'cinco_iguais': -1
     }
 }
-
+def cartela_completa(cartela):
+    for v in cartela['regra_simples'].values():
+        if v == -1:
+            return False
+    for v in cartela['regra_avancada'].values():
+        if v == -1:
+            return False
+    return True
 def calcular_total(cartela):
     total = 0
     
@@ -26,7 +33,7 @@ def calcular_total(cartela):
     return total
 
 
-for rodada in range(11):
+while not cartela_completa(cartela):
 
     dados_rolados = rolar_dados(5)
     dados_guardados = []
