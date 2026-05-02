@@ -32,7 +32,7 @@ def calcular_total(cartela):
     total += sum(v for v in cartela['regra_avancada'].values() if v != -1)
     return total
 
-
+imprime_cartela(cartela)
 while not cartela_completa(cartela):
 
     dados_rolados = rolar_dados(5)
