@@ -26,7 +26,7 @@ def calcular_total(cartela):
     return total
 
 
-for rodada in range(12):
+for rodada in range(11):
 
     dados_rolados = rolar_dados(5)
     dados_guardados = []
